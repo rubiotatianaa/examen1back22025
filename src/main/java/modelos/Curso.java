@@ -5,13 +5,15 @@ import jakarta.persistence.*;
 @Entity
 public class Curso {
 
-    @I
-    @Ge(strategy = IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "nombre", nullable = false, unique = false)
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name="fk_docente", referencedColumnName = "id");
+    @JoinColumn(name="fk_docente", referencedColumnName = "id")
     @JsonBackReference(value = "docente-curso")
     private Docente docente;
 
