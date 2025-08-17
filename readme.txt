@@ -39,4 +39,29 @@ Se generó un nuevo constructor incluyendo el tercer atributo faltante para aseg
 Métodos de acceso faltantes
 La clase no contaba con los métodos getter y setter. Se implementaron para permitir la manipulación controlada de los atributos.
 
+--> Corrección de anotaciones
+
+Clave primaria
+Se encontró la anotación incorrecta @I, la cual fue corregida a @Id.
+@Id se utiliza para identificar el campo que será la clave primaria en la tabla correspondiente.
+
+Generación automática del identificador
+En el código se encontraba la anotación incompleta @Gen(strategy = IDENTITY), lo cual generaba error.
+Se realizó la corrección correspondiente a:
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+Esta anotación permite que el campo clave primaria se genere de manera automática con la estrategia de autoincremento propia de la base de datos.
+
+Campo nombre
+Inicialmente el atributo private String nombre; no contaba con anotaciones.
+Se añadió la anotación @Column para definir las características de este campo en la base de datos:
+@Column(name = "nombre", nullable = false, unique = false)
+private String nombre;
+Con esta configuración se establece que la columna no admite valores nulos (nullable = false) y que no es un campo único (unique = false).
+
+Llave foránea (JoinColumn)
+Se detectó un error en la anotación @JoinColumn, ya que incluía un punto y coma al final:
+@JoinColumn(name="fk_docente", referencedColumnName = "id");
+Las anotaciones en Java no deben llevar punto y coma al final, por lo tanto, se corrigió de la siguiente manera:
+@JoinColumn(name="fk_docente", referencedColumnName = "id")
+
 
