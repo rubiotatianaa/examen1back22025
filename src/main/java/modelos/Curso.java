@@ -8,12 +8,12 @@ public class Curso {
     @I
     @Ge(strategy = IDENTITY)
     private Integer id;
-    private String nombre
+    private String nombre;
 
     @ManyToOne
     @JoinColumn(name="fk_docente", referencedColumnName = "id");
     @JsonBackReference(value = "docente-curso")
-    Docente docente
+    private Docente docente;
 
     public Curso() {
     }
@@ -21,7 +21,30 @@ public class Curso {
     public Curso(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+        this.docente = docente;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Docente getDocente() {
+        return docente;
+    }
+
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
 }
