@@ -2,7 +2,7 @@ package com.example.Examen1Back2.modelos;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-@Entit
+@Entity
 @Table(name = "usuarios")
 public class Usuario {
 
