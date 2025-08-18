@@ -29,7 +29,7 @@ public class Usuario {
 
     //Estableciendo la relacion uno a uno con la tabla docente
     @OneToOne(mappedBy = "usuario")
-    @JsonBackReference(value = "docente-usuario")
+    @JsonBackReference(value = "docente_usuario")
     private Docente docente;
 
     public Usuario() {
