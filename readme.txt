@@ -62,6 +62,30 @@ Llave foránea (JoinColumn)
 Se detectó un error en la anotación @JoinColumn, ya que incluía un punto y coma al final:
 @JoinColumn(name="fk_docente", referencedColumnName = "id");
 Las anotaciones en Java no deben llevar punto y coma al final, por lo tanto, se corrigió de la siguiente manera:
-@JoinColumn(name="fk_docente", referencedColumnName = "id")
+@JoinColumn(name="fk_docente", referencedColumnName = "id").
+
+*DOCENTE
+En esta clase se identificaron y corrigieron varios aspectos:
+La anotación @Entity estaba incompleta (@Entit), por lo que se corrigió adecuadamente.
+La clave primaria no contaba con las anotaciones correspondientes, por lo que se agregaron:
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer id;
+
+- El campo especialidad no estaba declarado como una columna en la base de datos. Se añadió la anotación:
+@Column(name = "especialidad", nullable = false, unique = false)
+
+
+- No existían constructores definidos. Se generaron los siguientes:
+ public Docente() {
+ }
+ public Docente(Integer id, String especialidad, List<Curso> cursos, Usuario usuario) {
+     this.id = id;
+     this.especialidad = especialidad;
+     this.cursos = cursos;
+     this.usuario = usuario;
+ }
+
+- Los métodos getter y setter estaban desordenados o incompletos. Se eliminaron y se generaron nuevamente de forma ordenada para mantener una estructura clara y coherente.
 
 
