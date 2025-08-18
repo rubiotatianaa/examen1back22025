@@ -91,3 +91,32 @@ private Integer id;
 - Los métodos getter y setter estaban desordenados o incompletos. Se eliminaron y se generaron nuevamente de forma ordenada para mantener una estructura clara y coherente.
 
 
+*USUARIO
+
+- A continuación se detallan las correcciones y configuraciones aplicadas a la clase Usuario:
+La anotación @Entity estaba incompleta (@Entit), por lo que se corrigió adecuadamente para permitir que la clase sea reconocida como una entidad JPA.
+
+La anotación @GeneratedValue(strategy = GenerationType.) presentaba un error de sintaxis. Se completó correctamente como:
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+- El campo id corresponde a la clave primaria de la entidad. Aunque la anotación @Column no es obligatoria en este caso, se decidió incluirla para personalizar el
+nombre de la columna y dejar clara su correspondencia con la base de datos.
+
+- Los campos contraseña y telefono no estaban anotados como columnas, por lo que se les agregó la anotación @Column para mapearlos correctamente:
+@Column(name = "contraseña")
+private String contraseña;
+@Column(name = "telefono")
+private String telefono;
+
+
+- Para el campo tipoUsuario, no existía un enum definido previamente. Se creó un enumerado llamado TipoUsuario y se anotó el campo con:
+@Enumerated(EnumType.STRING)
+@Column(name = "tipo_usuario", nullable = false)
+private TipoUsuario tipoUsuario;
+Esto permite que el valor del enumerado se almacene como cadena de texto en la base de datos.
+Se revisaron las relaciones con otras entidades y se confirmó que están correctamente establecidas.
+
+-La clase contiene ambos constructores (vacío y con todos los atributos), correctamente definidos.
+
+- Se generaron los métodos getter y setter para todos los atributos de manera ordenada y coherente.
+
