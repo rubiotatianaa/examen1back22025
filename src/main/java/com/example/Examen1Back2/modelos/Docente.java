@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entit
+@Entity
 public class Docente {
 
-
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
+    @Column(name = "especialidad", nullable = false, unique = false)
     private  String especialidad;
 
     @OneToMany(mappedBy = "docente")
@@ -23,7 +23,15 @@ public class Docente {
     @JsonManagedReference(value = "docente-usuario")
     private Usuario usuario;
 
+    public Docente() {
+    }
 
+    public Docente(Integer id, String especialidad, List<Curso> cursos, Usuario usuario) {
+        this.id = id;
+        this.especialidad = especialidad;
+        this.cursos = cursos;
+        this.usuario = usuario;
+    }
 
     public Integer getId() {
         return id;
@@ -39,5 +47,21 @@ public class Docente {
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
+    }
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
