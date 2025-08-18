@@ -20,7 +20,7 @@ public class Usuario {
     @Column(name = "contraseña",nullable = false, unique = false)
     private String contraseña;
 
-    @Column(name = "contraseña",nullable = false, unique = false)
+    @Column(name = "telefono",nullable = false, unique = false)
     private String telefono;
 
     @Column(name = "tipo_usuario", nullable = false)
