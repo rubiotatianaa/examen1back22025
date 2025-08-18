@@ -14,7 +14,7 @@ public class Curso {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name="fk_docente", referencedColumnName = "id")
+    @JoinColumn(name="docente_id", referencedColumnName = "id")
     @JsonBackReference(value = "docente-curso")
     private Docente docente;
 
