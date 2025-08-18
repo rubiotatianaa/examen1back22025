@@ -26,6 +26,7 @@ Errores corregidos en la clase
 
 Al revisar la clase Curso se identificaron y corrigieron los siguientes errores:
 - Error de sintaxis en la declaración de atributos
+La anotación @Table(name = "estudiantes"), no se encontraba definidad y se asigna
 En el atributo private String nombre hacía falta una coma al final de la línea. Se realizó la corrección correspondiente.
 
 - Falta de encapsulamiento en un atributo
@@ -67,6 +68,7 @@ Las anotaciones en Java no deben llevar punto y coma al final, por lo tanto, se 
 *DOCENTE
 En esta clase se identificaron y corrigieron varios aspectos:
 La anotación @Entity estaba incompleta (@Entit), por lo que se corrigió adecuadamente.
+- La anotación @Table(name = "docentes"), no se encontraba definidad y se asigna
 La clave primaria no contaba con las anotaciones correspondientes, por lo que se agregaron:
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
